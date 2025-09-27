@@ -34,6 +34,7 @@ PROJECT_ROOT = Path("anomalib_local_results_PatchCore")
 def format_time(seconds):
     mins = int(seconds // 60)
     secs = int(seconds % 60)
+
     return f"{mins}분 {secs}초"
 
 
@@ -67,7 +68,7 @@ class LocalFolderDataset(Dataset):
             self.mask_paths.extend([None] * len(good_paths))
 
             bad_dir = self.root_dir / 'test' / 'bad'
-            mask_dir = self.root_dir / 'test' / 'mask'
+            mask_dir = self.root_dir / 'test' / 'mask_landmark'
             bad_paths = sorted(list(bad_dir.glob('*.*')))
             self.image_paths.extend(bad_paths)
             self.labels.extend([1] * len(bad_paths))
